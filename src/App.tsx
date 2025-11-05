@@ -1,12 +1,14 @@
+import { Outlet } from "react-router-dom"
+import { CommonLayout } from "./components/layout/commonLayout"
 
 
 function App() {
  
 
   return (
-    <>
-      <h2>Hello</h2>
-    </>
+      <CommonLayout>
+        <Outlet />
+      </CommonLayout>
   )
 }
 
