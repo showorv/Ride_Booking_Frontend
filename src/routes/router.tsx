@@ -10,8 +10,11 @@ import { Verify } from "@/pages/Verify";
 import AccountStatus from "@/pages/AccountStatus";
 
 import { lazy } from "react";
-import { RideRquest } from "@/pages/Rider/RideRquest";
+
 import { DashboardLayout } from "@/components/modules/dashboard/Dashboard";
+import { ProtectedRoute } from "@/components/modules/authentication/ProtectedRoute";
+import { RideRequestForm } from "@/pages/Rider/RideRquest";
+
 
 
 // const AdminDashboard = lazy(() => import("@/pages/dashboards/AdminDashboard"));
@@ -53,14 +56,14 @@ export const router = createBrowserRouter([
     // },
   
     {
-      // element: <ProtectedRoute />, // protect all dashboard pages
+      element: <ProtectedRoute />, 
       children: [
         {
           path: "/rider-dashboard",
           element: <DashboardLayout />,
           children: [
             { index: true, element: <RiderDashboard /> }, // /rider-dashboard default page
-            { path: "request", element: <RideRquest /> }, // /rider-dashboard/request
+            { path: "request", element: <RideRequestForm /> }, // /rider-dashboard/request
             // { path: "history", element: <RideHistory /> }, // /rider-dashboard/history
           ],
         },
