@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useGetRideHistoryQuery } from "@/redux/features/ride/ride.api";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useNavigate } from "react-router-dom";
 
 interface RideFilters {
   page: number;
@@ -31,7 +32,7 @@ export const RideHistory = () => {
   console.log(rides);
   console.log(meta);
   
-  
+  const navigate = useNavigate()
 
   // Handlers
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -125,7 +126,10 @@ export const RideHistory = () => {
           </thead>
           <tbody>
             {rides.map((ride) => (
-              <tr key={ride._id} className="border-t dark:border-neutral-800">
+              <tr key={ride._id} 
+              className="border-t dark:border-neutral-800 cursor-pointer hover:bg-neutral-100 dark:hover:bg-neutral-900" 
+              onClick={() => navigate(`/rider-dashboard/ride/${ride._id}`)}
+              >
                 <td className="p-3">{ride.pickupLocation?.address}</td>
                 <td className="p-3">{ride.dropLocation?.address}</td>
                 <td className="p-3">${ride.fare}</td>

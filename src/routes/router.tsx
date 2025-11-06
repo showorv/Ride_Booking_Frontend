@@ -15,6 +15,8 @@ import { DashboardLayout } from "@/components/modules/dashboard/Dashboard";
 import { ProtectedRoute } from "@/components/modules/authentication/ProtectedRoute";
 import { RideRequestForm } from "@/pages/Rider/RideRquest";
 import { RideHistory } from "@/pages/Rider/RideHistory";
+import { RideDetails } from "@/pages/Rider/RideDetails";
+import { Profile } from "@/pages/user/Profile";
 
 
 
@@ -51,6 +53,10 @@ export const router = createBrowserRouter([
         path:"/account-status",
         Component: AccountStatus
     },
+    {
+        path:"/profile",
+        Component: Profile
+    },
     // {
     //     path:"/unauthorized",
     //     Component: Unauthorized
@@ -66,6 +72,8 @@ export const router = createBrowserRouter([
             { index: true, element: <RiderDashboard /> }, 
             { path: "request", element: <RideRequestForm /> },
             { path: "history", element: <RideHistory /> }, 
+            { path: "ride/:id", element: <RideDetails /> }, 
+
           ],
         },
         // Similarly for admin and driver dashboards
