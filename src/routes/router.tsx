@@ -14,6 +14,7 @@ import { lazy } from "react";
 import { DashboardLayout } from "@/components/modules/dashboard/Dashboard";
 import { ProtectedRoute } from "@/components/modules/authentication/ProtectedRoute";
 import { RideRequestForm } from "@/pages/Rider/RideRquest";
+import { RideHistory } from "@/pages/Rider/RideHistory";
 
 
 
@@ -62,9 +63,9 @@ export const router = createBrowserRouter([
           path: "/rider-dashboard",
           element: <DashboardLayout />,
           children: [
-            { index: true, element: <RiderDashboard /> }, // /rider-dashboard default page
-            { path: "request", element: <RideRequestForm /> }, // /rider-dashboard/request
-            // { path: "history", element: <RideHistory /> }, // /rider-dashboard/history
+            { index: true, element: <RiderDashboard /> }, 
+            { path: "request", element: <RideRequestForm /> },
+            { path: "history", element: <RideHistory /> }, 
           ],
         },
         // Similarly for admin and driver dashboards

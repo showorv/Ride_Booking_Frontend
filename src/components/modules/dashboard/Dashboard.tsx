@@ -33,7 +33,7 @@ import {
       RIDER: [
         { name: "Dashboard", path: "/rider-dashboard" },
         { name: "Request Ride", path: "request" },
-        { name: "Ride History", path: "/rider/history" },
+        { name: "Ride History", path: "history" },
       ],
       DRIVER: [
         { name: "Dashboard", path: "/driver-dashboard" },
