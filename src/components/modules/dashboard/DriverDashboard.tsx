@@ -31,11 +31,11 @@ export const DriverDashboard = () => {
   const handleToggle = async () => {
     if (!driverData?.data?._id) return;
     try {
-      // Map boolean to string for backend
+     
       const newStatus = online ? "OFFLINE" : "ONLINE";
       await setOnlineStatus({ onlineStatus: newStatus }).unwrap();
 
-      // Update frontend state
+    
       setOnline(newStatus === "ONLINE");
       toast.success(`You are now ${newStatus}`);
     } catch (err: any) {
@@ -51,7 +51,7 @@ export const DriverDashboard = () => {
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-start bg-neutral-50 dark:bg-neutral-900 p-6 space-y-6">
-      {/* Driver Info + Online Toggle */}
+    
       <div className="w-full max-w-lg p-6 bg-white dark:bg-black rounded-xl shadow-md border border-neutral-200 dark:border-neutral-800">
         <h2 className="text-2xl font-semibold mb-6 text-center">Driver Dashboard</h2>
 
@@ -99,7 +99,7 @@ export const DriverDashboard = () => {
         </div>
       </div>
 
-      {/* Earnings Dashboard */}
+     
       <EarningsDashboard />
     </div>
   );

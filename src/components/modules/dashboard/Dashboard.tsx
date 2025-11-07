@@ -6,11 +6,12 @@ import {
     SidebarProvider,
   } from "@/components/ui/sidebar";
   import { Link, useNavigate, useLocation, Outlet } from "react-router-dom";
-  import { useGetMeInfoQuery } from "@/redux/features/auth/auth.api";
+  import { authApi, useGetMeInfoQuery, useLogoutMutation } from "@/redux/features/auth/auth.api";
   import { Button } from "@/components/ui/button";
   import { Menu } from "lucide-react";
   import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
   import { useState } from "react";
+import { useDispatch } from "react-redux";
   
   export const DashboardLayout = () => {
     const { data } = useGetMeInfoQuery(undefined);
@@ -18,17 +19,26 @@ import {
     const navigate = useNavigate();
     const location = useLocation();
     const [open, setOpen] = useState(false);
-  
-    const handleLogout = () => {
-      navigate("/login");
-    };
+    const [logout] = useLogoutMutation()
+    const dispatch = useDispatch();
+
+
+    const handleLogout =async ()=>{
+      await logout(undefined)
+       dispatch(authApi.util.resetApiState())
+       navigate("/login")
+       
+   
+   
+     }
   
     const sidebarLinks = {
-      ADMIN: [
-        { name: "Dashboard", path: "/admin-dashboard" },
-        { name: "Users", path: "/admin/users" },
-        { name: "Rides", path: "/admin/rides" },
-        { name: "Analytics", path: "/admin/analytics" },
+      SUPERADMIN: [
+        { name: "Dashboard", path: "/superadmin-dashboard" },
+        { name: "User Manage", path: "users" },
+        { name: "Driver Manage", path: "drivers" },
+        { name: "Ride Oversight", path: "rides" },
+      
       ],
       RIDER: [
         { name: "Dashboard", path: "/rider-dashboard" },
@@ -44,7 +54,7 @@ import {
       ],
     };
   
-    const links = user ? sidebarLinks[user.role] || [] : [];
+    const links = user ? sidebarLinks[user.role]  || [] : [];
   
     return (
       <SidebarProvider>
@@ -52,10 +62,10 @@ import {
           {/* Desktop Sidebar */}
           <Sidebar className="hidden md:flex w-64 border-r border-neutral-200 dark:border-neutral-800 flex-col justify-between">
             <SidebarContent className="pt-10 space-y-2">
-              {links.map((link) => {
+              {links.map((link:any) => {
                 const isActive = location.pathname === link.path;
                 return (
-                  <SidebarMenuItem key={link.path} asChild>
+                  <SidebarMenuItem key={link.path} >
                     <Link
                       to={link.path}
                       className={`block w-full text-center py-3 rounded-lg transition-colors font-medium
@@ -81,7 +91,7 @@ import {
             </SidebarFooter>
           </Sidebar>
   
-          {/* Mobile Sidebar Sheet */}
+     
           <div className="md:hidden fixed top-4 left-4 z-50">
             <Sheet open={open} onOpenChange={setOpen}>
               <SheetTrigger asChild>
@@ -131,7 +141,7 @@ import {
           </div>
   
           <main className="flex-1 p-6 min-h-screen bg-white dark:bg-black">
-  <div className="w-full flex justify-center">
+  <div className="max-w-full flex justify-center">
     <div className="w-full max-w-2xl">
       <Outlet />
     </div>

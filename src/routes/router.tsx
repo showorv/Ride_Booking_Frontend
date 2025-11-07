@@ -21,6 +21,10 @@ import { DriverDashboard } from "@/components/modules/dashboard/DriverDashboard"
 import { AvailableRides } from "@/pages/driver/Ride";
 import { ActiveRide } from "@/pages/driver/ActiveRide";
 import { DriverRideHistory } from "@/pages/driver/RideHistory";
+import { AdminDashboard } from "@/components/modules/dashboard/AdminDashboard";
+import { UserManagement } from "@/pages/Admin/User";
+import { DriverManagement } from "@/pages/Admin/Driver";
+import { RideOversight } from "@/pages/Admin/Rides";
 
 
 
@@ -88,6 +92,20 @@ export const router = createBrowserRouter([
             { path: "rides", element: <AvailableRides /> },
             { path: "active-ride", element: <ActiveRide /> },
             { path: "ride-history", element: <DriverRideHistory /> },
+            
+
+          ],
+        },
+
+        {
+          path: "/superadmin-dashboard",
+          element: <DashboardLayout />,
+          children: [
+            { index: true, element: <AdminDashboard /> }, 
+            { path: "users", element: <UserManagement /> },
+            { path: "drivers", element: <DriverManagement /> },
+            { path: "rides", element: <RideOversight /> },
+           
             
 
           ],

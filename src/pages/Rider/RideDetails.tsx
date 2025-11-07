@@ -8,7 +8,7 @@ export const RideDetails = () => {
   if (isLoading) return <p>Loading...</p>;
   if (isError || !ride) return <p>Ride not found.</p>;
 
-  const rideData = ride.data;
+  const rideData = ride?.data;
   const { pickupLocation, dropLocation, fare, status, timeStamps, driver } = rideData;
 
   return (

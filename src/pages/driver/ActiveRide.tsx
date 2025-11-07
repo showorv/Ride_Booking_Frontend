@@ -5,7 +5,7 @@ import { toast } from "sonner";
 import {
   useGetActiveRideQuery,
   useUpdateRideStatusMutation,
-} from "@/redux/features/driver/driver.api"; // Create these endpoints
+} from "@/redux/features/driver/driver.api"; 
 
 interface Ride {
   _id: string;
@@ -19,8 +19,12 @@ export const ActiveRide = () => {
   const { data, isLoading, isError, refetch } = useGetActiveRideQuery(undefined);
   const [updateRideStatus] = useUpdateRideStatusMutation();
   const [ride, setRide] = useState<Ride | null>(null);
-  console.log("Current ride status:", ride?.status);
-  console.log("Current ride status:", ride?._id);
+
+
+  // console.log("Current ride status:", ride?.status);
+  // console.log("Current ride status:", ride?._id);
+
+  
   useEffect(() => {
     if (data?.data) setRide(data.data);
     if (isError) toast.error("Failed to fetch active ride.");
