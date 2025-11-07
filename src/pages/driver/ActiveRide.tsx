@@ -78,7 +78,7 @@ export const ActiveRide = () => {
 
       {ride.status !== "COMPLETED" && (
         <button
-          className="mt-4 w-full px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          className="mt-4 w-full px-4 py-2 bg-black  dark:bg-white text-white rounded hover:bg-blue-600"
           onClick={handleUpdateStatus}
         >
           Move to {nextStatusMap[ride.status]}

@@ -32,7 +32,7 @@ export const AvailableRides = () => {
     try {
       await acceptRide({ rideId }).unwrap();
       toast.success("Ride accepted!");
-      refetch(); // Refresh rides
+      refetch(); 
     } catch (err: any) {
       console.error(err);
       toast.error(err?.data?.message || "Failed to accept ride.");
@@ -43,7 +43,7 @@ export const AvailableRides = () => {
     try {
       await cancelRide({ rideId }).unwrap();
       toast.success("Ride cancelled!");
-      refetch(); // Refresh rides
+      refetch(); 
     } catch (err: any) {
       console.error(err);
       toast.error(err?.data?.message || "Failed to cancel ride.");

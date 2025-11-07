@@ -40,6 +40,7 @@ import {
         { name: "Dashboard", path: "/driver-dashboard" },
         { name: "Available Ride", path: "rides" },
         { name: "Active Ride Control", path: "active-ride" },
+        { name: "Ride History", path: "ride-history" },
       ],
     };
   

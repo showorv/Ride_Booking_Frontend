@@ -20,6 +20,7 @@ import { Profile } from "@/pages/user/Profile";
 import { DriverDashboard } from "@/components/modules/dashboard/DriverDashboard";
 import { AvailableRides } from "@/pages/driver/Ride";
 import { ActiveRide } from "@/pages/driver/ActiveRide";
+import { DriverRideHistory } from "@/pages/driver/RideHistory";
 
 
 
@@ -86,6 +87,7 @@ export const router = createBrowserRouter([
             { index: true, element: <DriverDashboard /> }, 
             { path: "rides", element: <AvailableRides /> },
             { path: "active-ride", element: <ActiveRide /> },
+            { path: "ride-history", element: <DriverRideHistory /> },
             
 
           ],

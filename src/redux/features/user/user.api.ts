@@ -17,7 +17,7 @@ export const userApi = baseApi.injectEndpoints({
           return {
             url: `/user/${id}`,
             method: "PATCH",
-            body: formData,
+            data: formData,
             // Do NOT set content-type; browser sets it automatically for FormData
           };
         },
@@ -27,7 +27,7 @@ export const userApi = baseApi.injectEndpoints({
         url: "/auth/change-password",
         method: "POST",
       
-        body: data,
+        data: data,
       }),
     }),
   }),

@@ -15,10 +15,10 @@ export const driverApi = baseApi.injectEndpoints({
 
   
     setOnlineStatus: builder.mutation({
-      query: (payload: { onlineStatus: boolean }) => ({
+      query: (payload: { onlineStatus: string }) => ({
         url: "/driver/update-online-status",
         method: "POST",
-        body: payload,
+        data: payload,
       }),
       invalidatesTags: ["DRIVER"],
     }),
@@ -58,14 +58,32 @@ export const driverApi = baseApi.injectEndpoints({
         query: ({ rideId, status }: { rideId: string; status: string }) => ({
           url: `/driver/updateStatus/${rideId}`,
           method: "PATCH",
-          body: JSON.stringify({ status }), 
+          data: JSON.stringify({ status }), 
           headers: { "Content-Type": "application/json" }, 
         }),
       }),
+
+      getDriverEarnings: builder.query<any, void>({
+        query: () =>({ 
+            url:`/driver/earning-history`
+        }), 
+        providesTags: ["DRIVER"],
+      }),
+
+      getDriverRideHistory: builder.query({
+        query: (params?: { page?: number; limit?: number; search?: string }) => ({
+          url: "/driver/ride-history",
+          method: "GET",
+          params,
+        }),
+        providesTags: ["DRIVER"],
+      }),
+      
+      
       
   }),
 });
 
 
 
-export const { useGetDriverProfileQuery, useSetOnlineStatusMutation , useGetAvailableRidesQuery, useAcceptRideMutation,useCancelRideMutation,useGetActiveRideQuery,useUpdateRideStatusMutation} = driverApi;
+export const { useGetDriverProfileQuery, useSetOnlineStatusMutation , useGetAvailableRidesQuery, useAcceptRideMutation,useCancelRideMutation,useGetActiveRideQuery,useUpdateRideStatusMutation, useGetDriverEarningsQuery,useGetDriverRideHistoryQuery} = driverApi;
