@@ -51,8 +51,8 @@ export const RideDetails = () => {
           <h3 className="font-medium">Driver Info:</h3>
           {driver ? (
             <>
-              <p>Name: {driver?.name ?? "N/A"}</p>
-              <p>Phone: {driver?.phone ?? "N/A"}</p>
+              <p>Name: {driver?.user?.name ?? "N/A"}</p>
+              <p>Phone: {driver?.user?.phone ?? "N/A"}</p>
               <p>Vehicle: {driver?.vehicleNumber ?? "N/A"}</p>
             </>
           ) : (

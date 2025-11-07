@@ -38,8 +38,8 @@ import {
       ],
       DRIVER: [
         { name: "Dashboard", path: "/driver-dashboard" },
-        { name: "Active Rides", path: "/driver/active" },
-        { name: "Earnings", path: "/driver/earnings" },
+        { name: "Available Ride", path: "rides" },
+        { name: "Active Ride Control", path: "active-ride" },
       ],
     };
   

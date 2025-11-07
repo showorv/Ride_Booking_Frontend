@@ -26,7 +26,7 @@ export const userApi = baseApi.injectEndpoints({
       query: (data: { oldPassword: string; newPassword: string }) => ({
         url: "/auth/change-password",
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+      
         body: data,
       }),
     }),

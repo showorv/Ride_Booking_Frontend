@@ -17,6 +17,9 @@ import { RideRequestForm } from "@/pages/Rider/RideRquest";
 import { RideHistory } from "@/pages/Rider/RideHistory";
 import { RideDetails } from "@/pages/Rider/RideDetails";
 import { Profile } from "@/pages/user/Profile";
+import { DriverDashboard } from "@/components/modules/dashboard/DriverDashboard";
+import { AvailableRides } from "@/pages/driver/Ride";
+import { ActiveRide } from "@/pages/driver/ActiveRide";
 
 
 
@@ -76,7 +79,18 @@ export const router = createBrowserRouter([
 
           ],
         },
-        // Similarly for admin and driver dashboards
+        {
+          path: "/driver-dashboard",
+          element: <DashboardLayout />,
+          children: [
+            { index: true, element: <DriverDashboard /> }, 
+            { path: "rides", element: <AvailableRides /> },
+            { path: "active-ride", element: <ActiveRide /> },
+            
+
+          ],
+        },
+       
       ],
     },
 ])
