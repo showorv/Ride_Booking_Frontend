@@ -32,7 +32,7 @@ export const Navbar = () => {
   const navLinks = [
     { name: "Home", path: "/" },
     { name: "About", path: "/about" },
-    { name: "Features", path: "/features" },
+    { name: "Features", path: "/feature" },
     { name: "Contact", path: "/contact" },
     { name: "FAQ", path: "/faq" },
   ];

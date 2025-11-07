@@ -3,7 +3,7 @@ import { Home } from "@/pages/Home";
 import { createBrowserRouter } from "react-router";
 
 import { Contact } from "@/pages/Contact";
-import { About } from "@/pages/About";
+
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
 import { Verify } from "@/pages/Verify";
@@ -25,6 +25,9 @@ import { AdminDashboard } from "@/components/modules/dashboard/AdminDashboard";
 import { UserManagement } from "@/pages/Admin/User";
 import { DriverManagement } from "@/pages/Admin/Driver";
 import { RideOversight } from "@/pages/Admin/Rides";
+import { AboutPage } from "@/pages/About";
+import { FeaturesPage } from "@/pages/Feature";
+import { FAQPage } from "@/pages/FAQ";
 
 
 
@@ -38,8 +41,10 @@ export const router = createBrowserRouter([
         element: <App />, 
         children: [
           { index: true, element: <Home /> },      
-          { path: "about", element: <About /> },   
-          { path: "contact", element: <Contact /> } 
+          { path: "about", element: <AboutPage /> },   
+          { path: "contact", element: <Contact /> } ,
+          { path: "feature", element: <FeaturesPage /> } ,
+          { path: "faq", element: <FAQPage /> } 
         ],
       },
     
