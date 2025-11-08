@@ -15,6 +15,28 @@ export interface IRideRequest {
   paymentMethod?: string;
 }
 
+// export interface IRideResponse {
+//   _id: string;
+//   pickupLocation: { address: string; lat?: number; lng?: number };
+//   dropLocation: { address: string; lat?: number; lng?: number };
+//   fare: number;
+//   status: string;
+//   timeStamps: {
+//     requestedAt: string;
+//     acceptedAt?: string;
+//     pickedUpAt?: string;
+//     completedAt?: string;
+//     canceledAt?: string;
+//   };
+//   isCancelledByRider?: boolean;
+//   driver?: {
+//     _id: string;
+//     name?: string;
+//     phone?: string;
+//     profile?: string;
+//     vehicleNumber?: string;
+//   } | null;
+// }
 export interface IRideResponse {
   _id: string;
   pickupLocation: { address: string; lat?: number; lng?: number };
@@ -31,13 +53,14 @@ export interface IRideResponse {
   isCancelledByRider?: boolean;
   driver?: {
     _id: string;
-    name?: string;
-    phone?: string;
-    profile?: string;
+    user?: {
+      _id?: string;
+      name?: string;
+      phone?: string;
+    };
     vehicleNumber?: string;
   } | null;
 }
-
 
 export interface RideHistoryFilters {
   page?: number;
@@ -61,6 +84,14 @@ interface RideHistoryResponse {
     rides: IRideResponse[];
   }
 }
+
+export interface IRideDetailsApiResponse {
+  statusCode: number;
+  success: boolean;
+  message: string;
+  data: IRideResponse;
+}
+
 export const rideApi = baseApi.injectEndpoints({
   endpoints: (builder) => ({
     createRide: builder.mutation<IRideResponse, IRideRequest>({
@@ -98,13 +129,20 @@ export const rideApi = baseApi.injectEndpoints({
       providesTags: ["RIDE"],
     }),
 
-    getRideDetails: builder.query<IRideResponse, string>({
+    getRideDetails: builder.query<IRideDetailsApiResponse, string>({
       query: (rideId) => ({
         url: `/ride/rideDetails/${rideId}`,
         method: "GET",
       }),
       providesTags: ["RIDE"],
     }),
+
+    getRequestedRides: builder.query({
+      query: () =>({ url:"/ride/request"}),
+      providesTags: ["RIDE"],
+    }),
+
+   
   }),
 });
 
@@ -113,5 +151,6 @@ export const {
   useCancelRideMutation,
   useGetCurrentRideQuery,
   useGetRideHistoryQuery,
-  useGetRideDetailsQuery
+  useGetRideDetailsQuery,
+  useGetRequestedRidesQuery
 } = rideApi;

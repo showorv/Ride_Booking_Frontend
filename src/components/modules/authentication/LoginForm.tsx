@@ -25,37 +25,41 @@ export function LoginForm({
 
   const navigate = useNavigate()
 
-  const onSubmit: SubmitHandler<FieldValues> = async (data)=>{
-   
-
+  const onSubmit: SubmitHandler<FieldValues> = async (data) => {
     try {
-      const res = await login(data).unwrap()
-
-      if(res.success){
-        toast.success("Login successfull")
-      
-        navigate("/")
+      const res = await login(data).unwrap();
+  
+      if (res.success) {
+        const user = res.data.user;
+        const driver = res.data.driver;
+  
+        if (user.isBlocked) {
+          toast.error("Your account is blocked");
+          navigate("/account-status");
+          return;
+        }
+  
+        if (user.role === "DRIVER" && driver && driver.isSuspend === true) {
+          toast.error("Your driver account is suspended");
+          navigate("/account-status");
+          return;
+        }
+  
+        toast.success("Login successful!");
+        navigate("/"); 
       }
-      
-      console.log(res);
-      
-    } catch (err:any) {
-      // toast.error(data.message)
+    } catch (err: any) {
       const message = err.data?.message;
-      console.log(message);
-      if(message==="password is incorrect"){
-        toast.error("invalid email or password")
+      if (message === "password is incorrect") {
+        toast.error("Invalid email or password");
       }
-      if(message === "you are not verified"){
-        toast.error("You are not verified")
-        navigate("/verify" , {state: data.email})
+      if (message === "you are not verified") {
+        toast.error("You are not verified");
+        navigate("/verify", { state: data.email });
       }
-    
-    
-      
     }
-    
-  }
+  };
+  
   return (
     <div className={cn("flex flex-col gap-6", className)} >
       <div className="flex flex-col items-center gap-2 text-center">

@@ -2,7 +2,7 @@ import App from "@/App";
 import { Home } from "@/pages/Home";
 import { createBrowserRouter } from "react-router";
 
-import { Contact } from "@/pages/Contact";
+
 
 import Login from "@/pages/Login";
 import Register from "@/pages/Register";
@@ -28,11 +28,14 @@ import { RideOversight } from "@/pages/Admin/Rides";
 import { AboutPage } from "@/pages/About";
 import { FeaturesPage } from "@/pages/Feature";
 import { FAQPage } from "@/pages/FAQ";
+import BeADriverPage from "@/pages/user/BecomeDriver";
+import ContactPage from "@/pages/Contact";
+import RiderDashboard from "@/components/modules/dashboard/RiderDashboard";
 
 
 
 // const AdminDashboard = lazy(() => import("@/pages/dashboards/AdminDashboard"));
-const RiderDashboard = lazy(() => import("@/components/modules/dashboard/RiderDashboard"));
+// const RiderDashboard = lazy(() => import("@/components/modules/dashboard/RiderDashboard"));
 // const DriverDashboard = lazy(() => import("@/pages/dashboards/DriverDashboard"));
 
 export const router = createBrowserRouter([
@@ -42,7 +45,7 @@ export const router = createBrowserRouter([
         children: [
           { index: true, element: <Home /> },      
           { path: "about", element: <AboutPage /> },   
-          { path: "contact", element: <Contact /> } ,
+          { path: "contact", element: <ContactPage /> } ,
           { path: "feature", element: <FeaturesPage /> } ,
           { path: "faq", element: <FAQPage /> } 
         ],
@@ -69,6 +72,10 @@ export const router = createBrowserRouter([
     {
         path:"/profile",
         Component: Profile
+    },
+    {
+        path:"/become-driver",
+        Component: BeADriverPage
     },
     // {
     //     path:"/unauthorized",

@@ -61,7 +61,7 @@ export const DriverManagement = () => {
     </Button>
   </div>
 
-  {/* 📋 Table with horizontal scroll only */}
+
   <div className="overflow-x-auto w-full rounded-lg border border-gray-300 dark:border-gray-700">
     <table className="w-full min-w-[600px] text-xs sm:text-sm md:text-base border-collapse">
       <thead>

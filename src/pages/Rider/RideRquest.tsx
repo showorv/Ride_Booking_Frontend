@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useCreateRideMutation, useCancelRideMutation, useGetCurrentRideQuery } from "@/redux/features/ride/ride.api";
 import { toast } from "sonner";
+import { useNavigate } from "react-router-dom";
 
 const rideRequestSchema = z.object({
   pickupLocation: z.object({
@@ -29,6 +30,7 @@ export const RideRequestForm = () => {
   const [createRide, { isLoading }] = useCreateRideMutation();
   const [cancelRide, { isLoading: isCancelling }] = useCancelRideMutation();
   const { data: currentRide } = useGetCurrentRideQuery();
+  const navigate = useNavigate()
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<RideRequestFormType>({
     resolver: zodResolver(rideRequestSchema),
@@ -39,6 +41,7 @@ export const RideRequestForm = () => {
       // send only required backend fields, exclude paymentMethod
       await createRide(data).unwrap();
       toast.success("Ride requested successfully!");
+      navigate("/rider-dashboard")
       reset();
     } catch (err: any) {
       toast.error(err?.data?.message || err.message);
@@ -50,6 +53,7 @@ export const RideRequestForm = () => {
     try {
       await cancelRide(currentRide._id).unwrap();
       toast.success("Ride canceled successfully!");
+      
     } catch (err: any) {
       toast.error(err?.data?.message || err.message);
     }

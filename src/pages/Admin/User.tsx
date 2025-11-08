@@ -75,7 +75,7 @@ export const UserManagement = () => {
         </tbody>
       </table>
 
-      {/* Simple Pagination */}
+     
       <div className="flex justify-between items-center mt-4">
         <Button onClick={() => setPage((p) => Math.max(p - 1, 1))} disabled={page === 1}>
           Previous

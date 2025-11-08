@@ -13,9 +13,16 @@ import {
   import { useState } from "react";
 import { useDispatch } from "react-redux";
   
+type UserRole = "SUPERADMIN" | "RIDER" | "DRIVER";
+
+
   export const DashboardLayout = () => {
     const { data } = useGetMeInfoQuery(undefined);
-    const user = data?.data;
+
+
+   const user = data?.data?.user as { role?: UserRole } | undefined;
+
+
     const navigate = useNavigate();
     const location = useLocation();
     const [open, setOpen] = useState(false);
@@ -54,12 +61,12 @@ import { useDispatch } from "react-redux";
       ],
     };
   
-    const links = user ? sidebarLinks[user.role]  || [] : [];
+    const links = user ?.role? sidebarLinks[user?.role]  || [] : [];
   
     return (
       <SidebarProvider>
         <div className="w-full flex min-h-screen bg-white dark:bg-black text-neutral-800 dark:text-neutral-200">
-          {/* Desktop Sidebar */}
+        
           <Sidebar className="hidden md:flex w-64 border-r border-neutral-200 dark:border-neutral-800 flex-col justify-between">
             <SidebarContent className="pt-10 space-y-2">
               {links.map((link:any) => {
@@ -105,7 +112,7 @@ import { useDispatch } from "react-redux";
                 className="p-0 w-64 bg-white dark:bg-black flex flex-col justify-between h-full"
               >
                 <div className="pt-10 space-y-2">
-                  {links.map((link) => {
+                  {links.map((link:any) => {
                     const isActive = location.pathname === link.path;
                     return (
                       <Link

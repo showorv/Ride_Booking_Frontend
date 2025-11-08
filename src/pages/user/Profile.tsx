@@ -14,10 +14,10 @@ export const Profile = () => {
   const [showPasswordModal, setShowPasswordModal] = useState(false);
 
   useEffect(() => {
-    if (data?.data) {
+    if (data?.data?.user) {
       setForm({
-        name: data.data.name || "",
-        phone: data.data.phone || "",
+        name: data.data.user.name || "",
+        phone: data.data.user.phone || "",
       });
     }
   }, [data]);

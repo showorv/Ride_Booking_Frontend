@@ -31,7 +31,7 @@ export const RideOversight = () => {
     <div className="p-4 sm:p-6 max-w-full bg-white dark:bg-black rounded-xl shadow-md border border-gray-200 dark:border-gray-800">
       <h2 className="text-xl sm:text-2xl font-semibold mb-4">Ride Oversight</h2>
 
-      {/* Filters */}
+  
       <div className="flex flex-col sm:flex-row gap-2 sm:gap-3 mb-4 items-stretch">
         <Input
           placeholder="Search driver/rider"
@@ -107,7 +107,7 @@ export const RideOversight = () => {
         </table>
       </div>
 
-      {/* Pagination */}
+    
       <div className="flex flex-col sm:flex-row justify-between items-center mt-4 gap-2">
         <Button
           onClick={() => setPage((p) => Math.max(p - 1, 1))}

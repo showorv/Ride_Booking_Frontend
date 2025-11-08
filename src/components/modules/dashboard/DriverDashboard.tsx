@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useId } from "react";
 import { toast } from "sonner";
 import { Button } from "@/components/ui/button";
 import { useGetMeInfoQuery } from "@/redux/features/auth/auth.api";
@@ -12,7 +12,9 @@ import { EarningsDashboard } from "@/pages/driver/EarningChar";
 
 export const DriverDashboard = () => {
   const { data: userData, isLoading: isUserLoading } = useGetMeInfoQuery(undefined);
-  const userId = userData?.data?._id;
+  const userId = userData?.data?.user?._id;
+  console.log(useId);
+  
 
   const { data: driverData, isLoading: isDriverLoading } = useGetDriverProfileQuery(
     userId!,
@@ -70,13 +72,13 @@ export const DriverDashboard = () => {
 
         <div className="space-y-2">
           <p>
-            <span className="font-medium">Name:</span> {userData?.data?.name}
+            <span className="font-medium">Name:</span> {userData?.data?.user?.name}
           </p>
           <p>
-            <span className="font-medium">Email:</span> {userData?.data?.email}
+            <span className="font-medium">Email:</span> {userData?.data?.user?.email}
           </p>
           <p>
-            <span className="font-medium">Phone:</span> {userData?.data?.phone}
+            <span className="font-medium">Phone:</span> {userData?.data?.user?.phone}
           </p>
           <p>
             <span className="font-medium">Vehicle Number:</span> {driverData?.data?.vehicleNumber || "N/A"}

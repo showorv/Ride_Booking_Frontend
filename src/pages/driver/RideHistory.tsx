@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useGetDriverRideHistoryQuery } from "@/redux/features/driver/driver.api";
 import { format } from "date-fns";
+import { Button } from "@/components/ui/button";
 
 export const DriverRideHistory = () => {
   const [page, setPage] = useState(1);
@@ -34,12 +35,12 @@ export const DriverRideHistory = () => {
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <button
-          className="px-4 py-2 bg-black dark:bg-white text-white rounded"
+        <Button
+          className="px-4 py-2 bg-black dark:bg-white dark:text-black text-white rounded"
           onClick={() => refetch()}
         >
           Search
-        </button>
+        </Button>
       </div>
 
       <table className="w-full table-auto border-collapse border border-neutral-300 dark:border-neutral-700">
@@ -69,23 +70,23 @@ export const DriverRideHistory = () => {
 
 
       <div className="mt-4 flex justify-between items-center">
-        <button
+        <Button
           disabled={page <= 1}
           onClick={() => setPage((prev) => prev - 1)}
           className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
         >
           Prev
-        </button>
+        </Button>
         <span>
           Page {page} of {totalPages}
         </span>
-        <button
+        <Button
           disabled={page >= totalPages}
           onClick={() => setPage((prev) => prev + 1)}
-          className="px-4 py-2 bg-gray-300 rounded disabled:opacity-50"
+          className="px-4 py-2 bg-gray-300  rounded disabled:opacity-50"
         >
           Next
-        </button>
+        </Button>
       </div>
     </div>
   );

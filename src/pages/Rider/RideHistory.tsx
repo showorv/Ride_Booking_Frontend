@@ -34,7 +34,7 @@ export const RideHistory = () => {
   
   const navigate = useNavigate()
 
-  // Handlers
+
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFilters((prev) => ({ ...prev, search: e.target.value, page: 1 }));
   };
@@ -73,7 +73,7 @@ export const RideHistory = () => {
     <div className="p-6">
       <h2 className="text-2xl font-semibold mb-4">Ride History</h2>
 
-      {/* Filters */}
+   
       <div className="flex flex-wrap gap-3 mb-6">
         <Input
           placeholder="Search by driver"
@@ -108,7 +108,7 @@ export const RideHistory = () => {
         />
       </div>
 
-      {/* Ride List */}
+     
       {isLoading ? (
         <p>Loading...</p>
       ) : rides.length === 0 ? (
@@ -145,13 +145,14 @@ export const RideHistory = () => {
 
   
       {meta && (
-        <div className="flex justify-between mt-6">
-          <Button disabled={filters.page === 1} onClick={handlePrevPage}>
+        <div className="flex justify-between mt-6 ">
+          <Button disabled={filters.page === 1} onClick={handlePrevPage} className="bg-black text-white dark:bg-white dark:text-black">
             Previous
           </Button>
           <Button
             disabled={filters.page >= meta.totalPages}
             onClick={handleNextPage}
+            className="bg-black text-white dark:bg-white dark:text-black"
           >
             Next
           </Button>

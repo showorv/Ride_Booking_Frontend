@@ -30,7 +30,15 @@ export const userApi = baseApi.injectEndpoints({
         data: data,
       }),
     }),
+
+    createDriver: builder.mutation({
+      query: (formData) => ({
+        url: "/driver/create-driver",
+        method: "POST",
+        data: formData,
+      }),
+    }),
   }),
 });
 
-export const { useGetMeQuery, useUpdateProfileMutation, useChangePasswordMutation } = userApi;
+export const { useGetMeQuery, useUpdateProfileMutation, useChangePasswordMutation ,useCreateDriverMutation} = userApi;

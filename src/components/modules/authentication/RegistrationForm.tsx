@@ -18,7 +18,7 @@ import PasswordShow from "@/components/ui/PasswordShow";
 import { useRegisterMutation } from "@/redux/features/auth/auth.api";
 import { toast } from "sonner";
 
-// ✅ Updated schema with phone validation
+
 const formSchema = z
   .object({
     name: z.string().min(2, {
