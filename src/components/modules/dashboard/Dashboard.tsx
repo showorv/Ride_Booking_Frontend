@@ -41,6 +41,7 @@ type UserRole = "SUPERADMIN" | "RIDER" | "DRIVER";
   
     const sidebarLinks = {
       SUPERADMIN: [
+        { name: "Home", path: "/" },
         { name: "Dashboard", path: "/superadmin-dashboard" },
         { name: "User Manage", path: "users" },
         { name: "Driver Manage", path: "drivers" },
@@ -48,12 +49,16 @@ type UserRole = "SUPERADMIN" | "RIDER" | "DRIVER";
       
       ],
       RIDER: [
+        { name: "Home", path: "/" },
+
         { name: "Dashboard", path: "/rider-dashboard" },
         { name: "Request Ride", path: "request" },
         { name: "Ride History", path: "history" },
         
       ],
       DRIVER: [
+        { name: "Home", path: "/" },
+
         { name: "Dashboard", path: "/driver-dashboard" },
         { name: "Available Ride", path: "rides" },
         { name: "Active Ride Control", path: "active-ride" },

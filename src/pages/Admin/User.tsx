@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 
-export const UserManagement = () => {
+const UserManagement = () => {
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
 
@@ -93,3 +93,5 @@ export const UserManagement = () => {
     </div>
   );
 };
+
+export default UserManagement

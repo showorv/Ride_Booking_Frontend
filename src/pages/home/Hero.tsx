@@ -34,7 +34,7 @@ export const Hero = () => {
             <Link to={rideButton.path}>{rideButton.label}</Link>
           </Button>
           <Button variant="outline" asChild>
-            <Link to="/features">Learn More</Link>
+            <Link to="/feature">Learn More</Link>
           </Button>
         </div>
       </motion.div>

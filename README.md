@@ -6,8 +6,8 @@ A full-stack ride booking system (like Uber/Pathao) with **role-based access**, 
 
 ## 🌐 Live Deployment
 
-- **Frontend (Admin & Driver dashboards):** [https://yourfrontendlink.com](https://yourfrontendlink.com)  
-- **Backend API:** [https://yourbackendlink.com](https://yourbackendlink.com)
+- **Frontend (Admin & Driver dashboards):** [https://ride-booking-frontend-showorv-showorvs-projects.vercel.app](https://ride-booking-frontend-showorv-showorvs-projects.vercel.app)  
+- **Backend API:** [https://ride-booking-api-backend.vercel.app](https://ride-booking-api-backend.vercel.app)
 
 ---
 
@@ -101,7 +101,7 @@ RIDER_PASSWORD=Hello12
 ## Driver
 
 DRIVER_EMAIL=yshowrov7@gmail.com
-DRIVER_PASSWORD=SUPER_ADMIN_EMAIL=Hello23
+DRIVER_PASSWORD=Hello23
 
 ```
 ## 🧑‍💻 Author

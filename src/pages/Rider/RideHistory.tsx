@@ -13,7 +13,7 @@ interface RideFilters {
   maxFare?: number;
 }
 
-export const RideHistory = () => {
+ const RideHistory = () => {
   const [filters, setFilters] = useState<RideFilters>({
     page: 1,
     limit: 5,
@@ -161,3 +161,5 @@ export const RideHistory = () => {
     </div>
   );
 };
+
+export default RideHistory

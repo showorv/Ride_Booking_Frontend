@@ -14,16 +14,15 @@ import { lazy } from "react";
 import { DashboardLayout } from "@/components/modules/dashboard/Dashboard";
 import { ProtectedRoute } from "@/components/modules/authentication/ProtectedRoute";
 import { RideRequestForm } from "@/pages/Rider/RideRquest";
-import { RideHistory } from "@/pages/Rider/RideHistory";
+
 import { RideDetails } from "@/pages/Rider/RideDetails";
 import { Profile } from "@/pages/user/Profile";
 import { DriverDashboard } from "@/components/modules/dashboard/DriverDashboard";
 import { AvailableRides } from "@/pages/driver/Ride";
 import { ActiveRide } from "@/pages/driver/ActiveRide";
-import { DriverRideHistory } from "@/pages/driver/RideHistory";
+
 import { AdminDashboard } from "@/components/modules/dashboard/AdminDashboard";
-import { UserManagement } from "@/pages/Admin/User";
-import { DriverManagement } from "@/pages/Admin/Driver";
+
 import { RideOversight } from "@/pages/Admin/Rides";
 import { AboutPage } from "@/pages/About";
 import { FeaturesPage } from "@/pages/Feature";
@@ -34,9 +33,10 @@ import RiderDashboard from "@/components/modules/dashboard/RiderDashboard";
 
 
 
-// const AdminDashboard = lazy(() => import("@/pages/dashboards/AdminDashboard"));
-// const RiderDashboard = lazy(() => import("@/components/modules/dashboard/RiderDashboard"));
-// const DriverDashboard = lazy(() => import("@/pages/dashboards/DriverDashboard"));
+const RideHistory = lazy(() => import("@/pages/Rider/RideHistory"));
+const DriverRideHistory = lazy(() => import("@/pages/driver/RideHistory"));
+const UserManagement = lazy(() => import("@/pages/Admin/User"));
+const DriverManagement = lazy(() => import("@/pages/Admin/Driver"));
 
 export const router = createBrowserRouter([
     {

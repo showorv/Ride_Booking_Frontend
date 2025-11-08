@@ -10,7 +10,8 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
 
-export const DriverManagement = () => {
+const DriverManagement = () => {
+
   const [search, setSearch] = useState("");
   const [page, setPage] = useState(1);
   const limit = 10;
@@ -45,7 +46,7 @@ export const DriverManagement = () => {
     Driver Management
   </h2>
 
-  {/* 🔍 Search */}
+
   <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 mb-4">
     <Input
       placeholder="Search driver by name, email, or vehicle number"
@@ -63,7 +64,7 @@ export const DriverManagement = () => {
 
 
   <div className="overflow-x-auto w-full rounded-lg border border-gray-300 dark:border-gray-700">
-    <table className="w-full min-w-[600px] text-xs sm:text-sm md:text-base border-collapse">
+    <table className="w-full min-w-full text-xs sm:text-sm md:text-base border-collapse">
       <thead>
         <tr className="bg-gray-100 dark:bg-gray-800 text-left">
           <th className="p-1 sm:p-2 border">Name</th>
@@ -164,3 +165,5 @@ export const DriverManagement = () => {
   
   );
 };
+
+export default DriverManagement

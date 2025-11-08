@@ -5,7 +5,7 @@ import { useGetDriverRideHistoryQuery } from "@/redux/features/driver/driver.api
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
 
-export const DriverRideHistory = () => {
+const DriverRideHistory = () => {
   const [page, setPage] = useState(1);
   const [limit] = useState(10);
   const [search, setSearch] = useState("");
@@ -91,3 +91,5 @@ export const DriverRideHistory = () => {
     </div>
   );
 };
+
+export default DriverRideHistory

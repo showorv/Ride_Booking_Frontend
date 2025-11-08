@@ -5,7 +5,6 @@ export const Footer = () => {
     <footer className="border-t border-neutral-200 dark:border-neutral-800 bg-white dark:bg-black text-neutral-800 dark:text-neutral-300">
       <div className="max-w-7xl mx-auto px-4 py-10 grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        {/* Brand Section */}
         <div>
           <h3 className="text-xl font-semibold mb-3">RideWave</h3>
           <p className="text-sm">
@@ -13,7 +12,7 @@ export const Footer = () => {
           </p>
         </div>
 
-        {/* Quick Links */}
+       
         <div>
           <h4 className="font-semibold mb-3">Quick Links</h4>
           <ul className="space-y-2 text-sm">
@@ -28,7 +27,7 @@ export const Footer = () => {
               </Link>
             </li>
             <li>
-              <Link to="/features" className="hover:underline">
+              <Link to="/feature" className="hover:underline">
                 Features
               </Link>
             </li>
@@ -40,7 +39,7 @@ export const Footer = () => {
           </ul>
         </div>
 
-        {/* Social Icons */}
+       
         <div>
           <h4 className="font-semibold mb-3">Follow Us</h4>
           <div className="flex gap-4 text-lg">
@@ -51,9 +50,9 @@ export const Footer = () => {
         </div>
       </div>
 
-      {/* Footer Bottom */}
+
       <div className="border-t border-neutral-200 dark:border-neutral-800 text-center py-4 text-sm">
-        © {new Date().getFullYear()} RideWave. All rights reserved.
+        © {new Date().getFullYear()} RideWave (Yousuf). All rights reserved.
       </div>
     </footer>
   );

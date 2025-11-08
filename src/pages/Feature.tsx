@@ -1,7 +1,7 @@
 
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import { FaUser, FaCar, FaUserShield } from "react-icons/fa";
+import { FaUser, FaCar} from "react-icons/fa";
 
 const featuresData = [
   {

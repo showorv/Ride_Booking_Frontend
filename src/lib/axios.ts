@@ -30,7 +30,7 @@ let pendingQueue: {
 }[] = [];
 
 const processQueue = (error: unknown)=>{
-  pendingQueue.forEach((promise)=>{
+  pendingQueue.forEach(()=>{
     if(error){
       Promise.reject(error)
     }else{
