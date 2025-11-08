@@ -6,7 +6,7 @@ A full-stack ride booking system (like Uber/Pathao) with **role-based access**, 
 
 ## 🌐 Live Deployment
 
-- **Frontend:** [https://ride-booking-frontend-pi.vercel.app/](https://ride-booking-frontend-pi.vercel.app/)  
+- **Frontend:** [https://ride-booking-frontend-pi.vercel.app](https://ride-booking-frontend-pi.vercel.app)  
 - **Backend API:** [https://ride-booking-api-backend.vercel.app](https://ride-booking-api-backend.vercel.app)
 
 ---
