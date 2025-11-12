@@ -6,7 +6,7 @@ import { useGetMeInfoQuery } from "@/redux/features/auth/auth.api";
 
 export const Hero = () => {
   const { data: response } = useGetMeInfoQuery(undefined);
-  const user = response?.data;
+  const user = response?.data?.user;
 
   const rideButton = !user
     ? { label: "Book a Ride", path: "/login" }

@@ -15,7 +15,7 @@ createRoot(document.getElementById('root')!).render(
       <ThemeProvider defaultTheme='light' storageKey="vite-ui-theme">
 
     <RouterProvider router={router} />
-    <Toaster />
+    <Toaster position='top-center'/>
       </ThemeProvider>
     </ReduxProvider>
   </StrictMode>,

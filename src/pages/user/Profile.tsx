@@ -30,7 +30,7 @@ export const Profile = () => {
     if (e.target.files && e.target.files[0]) setFile(e.target.files[0]);
   };
 
-  const userId = data?.data?._id;
+  const userId = data?.data?.user?._id;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
