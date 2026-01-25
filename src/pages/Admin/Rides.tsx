@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useGetAllRidesQuery } from "@/redux/features/admin/admin.api";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { Loader } from "@/components/provider/Loader";
 
 export const RideOversight = () => {
   const [search, setSearch] = useState("");
@@ -25,7 +26,7 @@ export const RideOversight = () => {
 
   console.log(data);
   
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className="text-center mx-auto "><Loader /></p>;
 
   return (
     <div className="p-4 sm:p-6 max-w-full bg-white dark:bg-black rounded-xl shadow-md border border-gray-200 dark:border-gray-800">

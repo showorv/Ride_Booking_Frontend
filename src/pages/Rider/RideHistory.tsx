@@ -3,6 +3,7 @@ import { useGetRideHistoryQuery } from "@/redux/features/ride/ride.api";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useNavigate } from "react-router-dom";
+import { Loader } from "@/components/provider/Loader";
 
 interface RideFilters {
   page: number;
@@ -110,7 +111,7 @@ interface RideFilters {
 
      
       {isLoading ? (
-        <p>Loading...</p>
+        <p className="text-center mx-auto "><Loader /></p>
       ) : rides.length === 0 ? (
         <p>No rides found.</p>
       ) : (

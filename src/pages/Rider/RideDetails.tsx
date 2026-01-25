@@ -1,11 +1,12 @@
 import { useParams } from "react-router-dom";
 import { useGetRideDetailsQuery } from "@/redux/features/ride/ride.api";
+import { Loader } from "@/components/provider/Loader";
 
 export const RideDetails = () => {
   const { id } = useParams<{ id: string }>();
   const { data: ride, isLoading, isError } = useGetRideDetailsQuery(id!);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className="text-center mx-auto "><Loader /></p>;
   if (isError || !ride) return <p>Ride not found.</p>;
 
   const rideData = ride?.data;

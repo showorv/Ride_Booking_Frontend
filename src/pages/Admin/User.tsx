@@ -4,6 +4,7 @@ import { useGetAllUsersQuery, useBlockRiderMutation, useUnblockRiderMutation } f
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { Loader } from "@/components/provider/Loader";
 
 const UserManagement = () => {
   const [search, setSearch] = useState("");
@@ -28,7 +29,7 @@ const UserManagement = () => {
     }
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className="text-center mx-auto "><Loader /></p>;
 
   return (
     <div className="p-6 bg-white dark:bg-black rounded-xl shadow-md border border-gray-200 dark:border-gray-800">

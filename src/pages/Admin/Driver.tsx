@@ -9,6 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import { Loader } from "@/components/provider/Loader";
 
 const DriverManagement = () => {
 
@@ -38,7 +39,7 @@ const DriverManagement = () => {
     }
   };
 
-  if (isLoading) return <p>Loading drivers...</p>;
+  if (isLoading) return <p className="text-center mx-auto "><Loader /></p>;
 
   return (
 <div className="p-4 sm:p-6 max-w-full bg-white dark:bg-black rounded-xl shadow-md border border-gray-200 dark:border-gray-800">

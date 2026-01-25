@@ -1,3 +1,4 @@
+import { Loader } from "@/components/provider/Loader";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useGetRequestedRidesQuery, useCancelRideMutation } from "@/redux/features/ride/ride.api";
@@ -18,7 +19,7 @@ export const RequestedRides = () => {
     }
   };
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className="text-center mx-auto "><Loader /></p>;
   if (error) return <p>Error loading rides</p>;
 
   return (

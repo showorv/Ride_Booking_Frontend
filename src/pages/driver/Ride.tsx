@@ -13,6 +13,7 @@ import {
 } from "@/redux/features/driver/driver.api";
 import { useGetMeInfoQuery } from "@/redux/features/auth/auth.api";
 import { Button } from "@/components/ui/button";
+import { Loader } from "@/components/provider/Loader";
 
 interface Ride {
   _id: string;
@@ -118,7 +119,7 @@ export const AvailableRides = () => {
       </div>
     );
 
-  if (isLoading) return <p className="text-center mt-4">Loading available rides...</p>;
+  if (isLoading) return <p className="text-center mx-auto "><Loader /></p>;
   if (!rides.length) return <p className="text-center mt-4">No available rides at the moment.</p>;
 
   return (

@@ -1,5 +1,6 @@
 "use client";
 
+import { Loader } from "@/components/provider/Loader";
 import { useGetDriverEarningsQuery } from "@/redux/features/driver/driver.api";
 import { useEffect, useState } from "react";
 
@@ -28,7 +29,7 @@ export const EarningsDashboard = () => {
     if (isError) toast.error("Failed to load earnings history.");
   }, [data, isError]);
 
-  if (isLoading) return <p className="text-center mt-4">Loading earnings...</p>;
+  if (isLoading) return <p className="text-center mx-auto "><Loader /></p>;
   if (!chartData.length) return <p className="text-center mt-4">No earnings yet.</p>;
 
   return (

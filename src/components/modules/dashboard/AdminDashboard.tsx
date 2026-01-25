@@ -1,10 +1,11 @@
 
+import { Loader } from "@/components/provider/Loader";
 import { useGetAnalyticsQuery } from "@/redux/features/admin/admin.api";
 
 export const AdminDashboard = () => {
   const { data, isLoading } = useGetAnalyticsQuery(undefined);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <p className="text-center mx-auto "><Loader /></p>;
 
   const {
     totalUsers,

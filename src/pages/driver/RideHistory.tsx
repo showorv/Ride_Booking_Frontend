@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useGetDriverRideHistoryQuery } from "@/redux/features/driver/driver.api";
 import { format } from "date-fns";
 import { Button } from "@/components/ui/button";
+import { Loader } from "@/components/provider/Loader";
 
 const DriverRideHistory = () => {
   const [page, setPage] = useState(1);
@@ -16,7 +17,7 @@ const DriverRideHistory = () => {
     search,
   });
 
-  if (isLoading) return <p>Loading ride history...</p>;
+  if (isLoading) return <p className="text-center mx-auto "><Loader /></p>;
   if (isError) return <p>Failed to load ride history.</p>;
 
   const rides = data?.data?.rides || [];

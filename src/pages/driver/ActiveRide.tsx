@@ -7,6 +7,7 @@ import {
   useUpdateRideStatusMutation,
 } from "@/redux/features/driver/driver.api"; 
 import { Button } from "@/components/ui/button";
+import { Loader } from "@/components/provider/Loader";
 
 interface Ride {
   _id: string;
@@ -27,7 +28,7 @@ export const ActiveRide = () => {
     if (isError) toast.error("Failed to fetch active ride.");
   }, [data, isError]);
 
-  if (isLoading) return <p className="text-center mt-4">Loading active ride...</p>;
+  if (isLoading) return <p className="text-center mx-auto "><Loader /></p>;
   if (!ride) return <p className="text-center mt-4">No active ride currently.</p>;
 
   const nextStatusMap: Record<string, string | null> = {

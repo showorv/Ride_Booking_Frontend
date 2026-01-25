@@ -9,6 +9,7 @@ import {
   useSetOnlineStatusMutation,
 } from "@/redux/features/driver/driver.api";
 import { EarningsDashboard } from "@/pages/driver/EarningChar";
+import { Loader } from "@/components/provider/Loader";
 
 export const DriverDashboard = () => {
   const { data: userData, isLoading: isUserLoading } = useGetMeInfoQuery(undefined);
@@ -49,7 +50,7 @@ export const DriverDashboard = () => {
     }
   };
 
-  if (isUserLoading || isDriverLoading) return <p>Loading...</p>;
+  if (isUserLoading || isDriverLoading) return <p className="text-center mx-auto "><Loader /></p>;
 
   return (
     <div className="min-h-screen w-full flex flex-col items-center justify-start bg-neutral-50 dark:bg-neutral-900 p-6 space-y-6">
