@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Car, Menu } from "lucide-react";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { Link, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
@@ -49,8 +49,11 @@ export const Navbar = () => {
   className="fixed top-0 z-50 w-full border-b border-neutral-200 dark:border-neutral-800 bg-white/70 dark:bg-black/70 backdrop-blur-md"
 >
   <div className="max-w-7xl mx-auto flex items-center justify-between px-4 py-3">
-    <Link to="/" className="text-xl font-bold tracking-tight">
-      Ride<span className="text-neutral-500">Wave</span>
+    <Link to="/" className="flex items-center gap-2 text-xl font-bold tracking-tight">
+      <span className="grid size-8 place-items-center rounded-lg bg-black text-white dark:bg-white dark:text-black">
+        <Car className="size-4" />
+      </span>
+      <span>Ride<span className="text-neutral-500">Wave</span></span>
     </Link>
 
     {/* Desktop nav */}
@@ -133,7 +136,7 @@ export const Navbar = () => {
             {user && (
               <>
                 <Link
-                  to={`/${user.role}-dashboard`}
+                  to={`/${user.role.toLowerCase()}-dashboard`}
                   onClick={() => setOpen(false)}
                   className="nav-dashboard text-neutral-800 dark:text-neutral-200 text-lg font-medium hover:text-black dark:hover:text-white"
                 >

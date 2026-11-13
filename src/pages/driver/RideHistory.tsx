@@ -25,7 +25,7 @@ const DriverRideHistory = () => {
   const totalPages = Math.ceil(total / limit);
 
   return (
-    <div className="w-full max-w-4xl p-6 bg-white dark:bg-black rounded-xl shadow-md border border-neutral-200 dark:border-neutral-800">
+    <div className="w-full max-w-4xl mx-auto p-6 bg-white dark:bg-black rounded-xl shadow-md border border-neutral-200 dark:border-neutral-800">
       <h2 className="text-2xl font-semibold mb-4 text-center">Ride History</h2>
 
       <div className="mb-4 flex gap-2">

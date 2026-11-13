@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useCreateRideMutation, useCancelRideMutation, useGetCurrentRideQuery } from "@/redux/features/ride/ride.api";
 import { toast } from "sonner";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const rideRequestSchema = z.object({
   pickupLocation: z.object({
@@ -31,9 +31,14 @@ export const RideRequestForm = () => {
   const [cancelRide, { isLoading: isCancelling }] = useCancelRideMutation();
   const { data: currentRide } = useGetCurrentRideQuery();
   const navigate = useNavigate()
+  const prefill = (useLocation().state ?? {}) as { pickup?: string; drop?: string };
 
   const { register, handleSubmit, reset, formState: { errors } } = useForm<RideRequestFormType>({
     resolver: zodResolver(rideRequestSchema),
+    defaultValues: {
+      pickupLocation: { address: prefill.pickup ?? "" },
+      dropLocation: { address: prefill.drop ?? "" },
+    },
   });
 
   const onSubmit = async (data: RideRequestFormType) => {
@@ -60,8 +65,8 @@ export const RideRequestForm = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-[calc(100vh-2rem)] p-4">
-  <div className="w-full bg-white dark:bg-black p-8 rounded-xl shadow-md border border-neutral-200 dark:border-neutral-800">
+    <div className="flex justify-center items-start py-2 sm:py-6">
+  <div className="w-full max-w-xl bg-white dark:bg-black p-5 sm:p-8 rounded-2xl shadow-sm border border-neutral-200 dark:border-neutral-800">
     <h2 className="text-2xl font-semibold mb-6 text-center">Request a Ride</h2>
     <form className="space-y-4" onSubmit={handleSubmit(onSubmit)}>
       <div>

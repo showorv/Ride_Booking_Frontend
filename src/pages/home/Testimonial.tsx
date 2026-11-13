@@ -1,46 +1,54 @@
-
-
 import { motion } from "framer-motion";
-import { useEffect, useState } from "react";
+import { Quote, Star } from "lucide-react";
+import { SectionHeading } from "./HowWork";
 
 const testimonials = [
-  { name: "Alice", feedback: "Quick and safe rides!" },
-  { name: "Bob", feedback: "Professional drivers and smooth experience." },
-  { name: "Charlie", feedback: "Easy booking process and great support." },
+  { name: "Alice", role: "Daily commuter", feedback: "Quick and safe rides! I use RideWave every morning and my driver is always on time." },
+  { name: "Bob", role: "Business traveler", feedback: "Professional drivers and a smooth experience from booking to drop-off." },
+  { name: "Charlie", role: "Student", feedback: "Easy booking process and great support. Upfront fares mean no surprises." },
 ];
 
 export const Testimonials = () => {
-    const [mounted, setMounted] = useState(false);
-    useEffect(() => {
-        setMounted(true);
-      }, []);
-    
-      if (!mounted) return null; 
   return (
-    <section className="py-16 px-6 bg-neutral-50 dark:bg-neutral-900">
-      <div className="max-w-7xl mx-auto">
-        <h2 className="text-3xl font-bold text-center mb-12 dark:text-white">
-          Customer Feedback
-        </h2>
+    <section className="bg-neutral-50 px-4 py-20 dark:bg-neutral-900 sm:px-6 md:py-24">
+      <div className="mx-auto max-w-7xl">
+        <SectionHeading
+          eyebrow="Testimonials"
+          title="Riders love the way they move"
+          subtitle="Don't just take our word for it — here's what our community says."
+        />
 
         <motion.div
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
+          className="grid grid-cols-1 gap-5 md:grid-cols-3"
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true }}
-          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.3 } } }}
+          viewport={{ once: true, amount: 0.2 }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.15 } } }}
         >
-          {testimonials.map((t, i) => (
-            <motion.div
-              key={i}
-              className="bg-white dark:bg-black p-5 rounded-xl shadow-sm text-center"
+          {testimonials.map((t) => (
+            <motion.figure
+              key={t.name}
+              className="relative flex flex-col rounded-3xl border border-neutral-200 bg-white p-6 dark:border-neutral-800 dark:bg-black"
               variants={{ hidden: { opacity: 0, y: 20 }, visible: { opacity: 1, y: 0 } }}
-              transition={{ duration: 0.5, ease: "easeInOut" }}
-              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.5 }}
             >
-              <p className="text-gray-600 dark:text-gray-300 mb-3">"{t.feedback}"</p>
-              <span className="font-semibold dark:text-white">{t.name}</span>
-            </motion.div>
+              <Quote className="absolute right-6 top-6 size-8 text-neutral-200 dark:text-neutral-800" />
+              <div className="flex gap-0.5">
+                {Array.from({ length: 5 }).map((_, i) => (
+                  <Star key={i} className="size-4 fill-black text-black dark:fill-white dark:text-white" />
+                ))}
+              </div>
+              <blockquote className="mt-4 flex-1 text-neutral-700 dark:text-neutral-300">"{t.feedback}"</blockquote>
+              <figcaption className="mt-6 flex items-center gap-3 border-t border-neutral-200 pt-4 dark:border-neutral-800">
+                <span className="grid size-10 place-items-center rounded-full bg-black font-semibold text-white dark:bg-white dark:text-black">
+                  {t.name[0]}
+                </span>
+                <div>
+                  <p className="font-semibold dark:text-white">{t.name}</p>
+                  <p className="text-sm text-neutral-500">{t.role}</p>
+                </div>
+              </figcaption>
+            </motion.figure>
           ))}
         </motion.div>
       </div>
